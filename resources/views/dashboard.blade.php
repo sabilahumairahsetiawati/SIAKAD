@@ -6,13 +6,34 @@
     <x-page-header judul="Dashboard"
         deskripsi="Ringkasan data akademik (data sementara)." />
 
-    <div class="row g-3 mb-4">
-        @foreach ($statistik as $item)
-            <div class="col-12 col-sm-6 col-xl-3">
-                <x-stat-card :judul="$item['judul']" :jumlah="$item['jumlah']"
-                    :ikon="$item['ikon']" :warna="$item['warna']" />
+   <div class="row row-cols-1 row-cols-sm-2 row-cols-xl-5 g-3 mb-4">
+    @foreach ($statistik as $item)
+        <div class="col">
+            <x-stat-card
+                :judul="$item['judul']"
+                :jumlah="$item['jumlah']"
+                :ikon="$item['ikon']"
+                :warna="$item['warna']"
+            />
+        </div>
+    @endforeach
+</div>
+
+        <div class="col">
+            <div class="card stat-card border-0 shadow-sm h-100">
+                <div class="card-body d-flex align-items-center">
+                    <div class="rounded-3 bg-info-subtle text-info-emphasis p-3 me-3 fs-3 lh-1">
+                        <i class="bi bi-calculator"></i>
+                    </div>
+                    <div>
+                        <div class="text-body-secondary small">Rata-rata SKS per KRS</div>
+                        <div class="fs-3 fw-semibold">
+                            {{ number_format($rataRataSks, 1, ',', '.') }}
+                        </div>
+                    </div>
+                </div>
             </div>
-        @endforeach
+        </div>
     </div>
 
     <div class="row g-3">

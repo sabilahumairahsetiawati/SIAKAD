@@ -16,7 +16,11 @@
                     <td>{{ $loop->iteration }}</td>
                     @foreach ($kolom as $kunci => $judul)
                         <td>
-                            @if ($kunci === 'status')
+                            @if ($kunci === 'nim' && request()->routeIs('mahasiswa.index'))
+                                <a href="{{ route('mahasiswa.show', $item[$kunci]) }}">
+                                    {{ $item[$kunci] }}
+                                </a>
+                            @elseif ($kunci === 'status')
                                 @php
                                     $warna = match ($item[$kunci]) {
                                         'Aktif', 'Disetujui' => 'success',
@@ -45,4 +49,3 @@
         </tbody>
     </table>
 </div>
-```[cite: 2]
